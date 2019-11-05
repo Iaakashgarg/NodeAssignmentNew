@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Bands App</title>
+    
+    <style>
+  
+   * {
+  	box-sizing: border-box;
+     }
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  
+}
+
+	.navbar {
+	height:110px;
+  	overflow: hidden;
+  	background-color: #333;
+  	position: sticky;
+  	position: -webkit-sticky;
+  	top: 0;
+	}
+
+	/* Style the navigation bar links */
+.navbar h3 {
+  
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+
+.navbar button {
+  float:right;
+}
+
+.navbar button{
+ float:right;
+padding: 7px;
+margin-top:30px;
+	margin-right:50px;
+}
+
+/* Column container */
+.row {  
+	
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+ float:right
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Form CSS   */
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+
+button:hover {
+  opacity:1;
+}
+
+
+.form-control {
+  height: 30px;
+  width:380px;
+    background-color: hsl(182, 89%, 72%);
+    background-image: url('/addicon.png');
+    background-size: 27px;
+    background-position: 3px 3px 3px;
+    background-repeat: no-repeat;
+    padding-left: 50px;  
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+  <h3> Hello, {{username}}</h3>
+  <form action="/logout">
+  <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+  </form>
+  </div>
+  
+<div class="row">
+  <div class="side">
+<div class="container">
+<p> 
+
+<form method="POST" action="/add">
+    <div class="container mt-5" >
+		<div class="row">
+    <div class="col-8 form-group">
+		<div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add new band..." aria-label="Username"
+              aria-describedby="basic-addon1" name="band">
+		</form>
+</div>
+</div>
+</div>
+</div>
+<br>
+    <table class="table" align="center" border="1" width="500px" >
+    <tr>
+      <th >Band Name</th>
+      <th >Action</th>
+    </tr>
+    {{#each bands as |band|}}
+    <tr>
+      <td>
+        <div class="alert alert-secondary" role="alert" align="center">
+			          <h3><span>{{band.bandname}}</span></h3>
+    	</div>
+    </td>
+      
+      <td>
+        <form >
+          <div class="alert alert-light" role="alert" 
+            align="center">
+          <button  formmethod="POST"formaction="/delete?_method=DELETE"  class="btn btn-outline-secondary" 
+            name="bandDelete" value={{band.bandid}} > ❌ &nbsp;</button>
+          <button class="btn btn-outline-info" 
+            name="bandedit" value={{band.bandid}} formaction='edit/{{band.bandid}}'">Edit 📝</button>         
+        </form>       
+      </div>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+  </div>
+</p>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
+  
+</body>
+
+</html>
+	
+	

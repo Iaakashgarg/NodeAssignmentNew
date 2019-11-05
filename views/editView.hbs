@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/forgetPassword.css">
+</head>
+<body>
+    
+<div class="container">
+	<div class="container__item">
+		<form class="form" action="/update?_method=PUT" method="POST">
+        <input type="hidden" value={{id}} name="id">
+			<input type="text" class="form__field" placeholder="New Band Name" name="bandname"/>
+			<button type="submit" class="btn btn--primary btn--inside uppercase">Update Band</button>
+		</form>
+	</div>
+</div>
+</body>
+</html>
